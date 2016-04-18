@@ -1,16 +1,22 @@
 <?php
 
-namespace Milax\Mconsole\Mconsole\Sliders\Http\Controllers;
+namespace Milax\Mconsole\Sliders\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests;
+use Milax\Mconsole\Sliders\Http\Requests\SlidersRequest;
+use Milax\Mconsole\Sliders\Models\Slider;
+use Milax\Mconsole\Models\MconsoleUploadPreset;
+use Milax\Mconsole\Models\Language;
 
 /**
  * Sliders module controller file
  */
 class SlidersController extends Controller
 {
+    use \HasQueryTraits, \HasRedirects, \HasPaginator;
+    
+    protected $redirectTo = '/mconsole/sliders';
+    protected $model = 'Milax\Mconsole\Sliders\Models\Slider';
     
     /**
      * Display a listing of the resource.
@@ -19,7 +25,14 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        //
+        return $this->setPerPage(20)->run('mconsole::sliders.list', function ($item) {
+            return [
+                '#' => $item->id,
+                trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
+                trans('mconsole::sliders.table.slug') => $item->slug,
+                trans('mconsole::sliders.table.title') => $item->title,
+            ];
+        });
     }
 
     /**
@@ -29,7 +42,10 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        //
+        return view('mconsole::sliders.form', [
+            'presets' => MconsoleUploadPreset::all(),
+            'languages' => Language::all(),
+        ]);
     }
 
     /**
@@ -38,9 +54,11 @@ class SlidersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SlidersRequest $request)
     {
-        //
+        $slider = Slider::create($request->all());
+        
+        $this->handleImages($slider);
     }
 
     /**
@@ -62,7 +80,11 @@ class SlidersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('mconsole::sliders.form', [
+            'item' => Slider::find($id),
+            'presets' => MconsoleUploadPreset::all(),
+            'languages' => Language::all(),
+        ]);
     }
 
     /**
@@ -72,9 +94,13 @@ class SlidersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SlidersRequest $request, $id)
     {
-        //
+        $slider = Slider::find($id);
+        
+        $this->handleImages($slider);
+        
+        $slider->update($request->all());
     }
 
     /**
@@ -85,7 +111,7 @@ class SlidersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Slider::destroy($id);
     }
     
 }

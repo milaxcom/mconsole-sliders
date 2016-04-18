@@ -1,6 +1,6 @@
 <?php
 
-namespace Milax\Mconsole\Mconsole\Sliders;
+namespace Milax\Mconsole\Sliders;
 
 use Illuminate\Support\ServiceProvider;
 

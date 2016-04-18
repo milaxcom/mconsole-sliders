@@ -6,9 +6,9 @@
 Route::group([
     'prefix' => 'mconsole',
     'middleware' => ['web', 'mconsole'],
-    'namespace' => 'App\Mconsole\Sliders\Http\Controllers',
+    'namespace' => 'Milax\Mconsole\Sliders\Http\Controllers',
 ], function () {
     
-    //
+    Route::resource('/sliders', 'SlidersController');
 
 });

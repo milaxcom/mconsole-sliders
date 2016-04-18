@@ -1,6 +1,6 @@
 <?php
 
-use Milax\Mconsole\Mconsole\Sliders\Installer;
+use Milax\Mconsole\Sliders\Installer;
 
 /**
  * Sliders module bootstrap file
@@ -13,7 +13,7 @@ return [
     'register' => [
         'middleware' => [],
         'providers' => [
-            Milax\Mconsole\Mconsole\Sliders\Provider::class,
+            \Milax\Mconsole\Sliders\Provider::class,
         ],
         'aliases' => [],
         'bindings' => [],
