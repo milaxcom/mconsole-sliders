@@ -24,20 +24,18 @@ class SliderRequest extends Request
      */
     public function rules()
     {
-        $slider = Slider::find($this->$slider);
+        $slider = Slider::find($this->slider);
         
         switch ($this->method) {
             case 'PUT':
             case 'UPDATE':
                 return [
-                    'slug' => 'max:255|unique:galleries,slug,' . $slider->id,
                     'title' => 'required|max:255',
                 ];
                 break;
             
             default:
                 return [
-                    'slug' => 'max:255|unique:galleries',
                     'title' => 'required|max:255',
                 ];
         }

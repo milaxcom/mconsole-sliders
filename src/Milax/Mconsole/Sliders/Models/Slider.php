@@ -9,7 +9,7 @@ class Slider extends Model
 {
     use \HasTags;
     
-    protected $fillable = ['preset_id', 'slug', 'title', 'description', 'duration', 'enabled'];
+    protected $fillable = ['preset_id', 'slug', 'title', 'description', 'duration', 'concurrent', 'shuffle', 'enabled'];
     
     /**
      * Automatically generate slug from heading if empty, format for url

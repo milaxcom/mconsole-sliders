@@ -123,10 +123,10 @@ class SlidersController extends Controller
     protected function handleImages($object)
     {
         // Images processing
-        app('API')->images->handle(function ($images) use (&$object) {
-            app('API')->images->attach([
+        app('API')->uploads->handle(function ($files) use (&$object) {
+            app('API')->uploads->attach([
                 'group' => 'sliders',
-                'images' => $images,
+                'images' => $files,
                 'related' => $object,
                 'unique' => false,
             ]);
