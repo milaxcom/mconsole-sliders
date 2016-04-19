@@ -3,27 +3,18 @@
 namespace Milax\Mconsole\Sliders;
 
 use Milax\Mconsole\Contracts\ModuleInstaller;
+use Milax\Mconsole\Models\MconsoleUploadPreset;
 
 class Installer implements ModuleInstaller
 {
     public static $options = [
         [
             'group' => 'sliders.options.settings.group',
-            'label' => 'sliders.options.max.name',
-            'key' => 'slider_max_limit',
-            'value' => 5,
-            'rules' => ['required', 'integer'],
-            'type' => 'text',
-            'enabled' => 1,
-        ],
-        [
-            'group' => 'sliders.options.settings.group',
-            'label' => 'sliders.options.fix.name',
-            'key' => 'slider_fix_count',
-            'value' => 1,
-            'rules' => ['required', 'integer'],
-            'type' => 'text',
-            'enabled' => 1,
+            'label' => 'sliders.options.presets.name',
+            'key' => 'sliders_show_presets',
+            'value' => '0',
+            'type' => 'select',
+            'options' => ['1' => 'sliders.options.on', '0' => 'sliders.options.off'],
         ],
     ];
     

@@ -5,7 +5,7 @@ namespace Milax\Mconsole\Sliders\Http\Requests;
 use App\Http\Requests\Request;
 use Milax\Mconsole\Sliders\Models\Slider;
 
-class SlidersRequest extends Request
+class SliderRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class SlidersRequest extends Request
      */
     public function rules()
     {
-        $slider = Sliders::find($this->$slider);
+        $slider = Slider::find($this->$slider);
         
         switch ($this->method) {
             case 'PUT':

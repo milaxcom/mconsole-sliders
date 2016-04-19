@@ -3,7 +3,7 @@
 namespace Milax\Mconsole\Sliders\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Milax\Mconsole\Sliders\Http\Requests\SlidersRequest;
+use Milax\Mconsole\Sliders\Http\Requests\SliderRequest;
 use Milax\Mconsole\Sliders\Models\Slider;
 use Milax\Mconsole\Models\MconsoleUploadPreset;
 use Milax\Mconsole\Models\Language;
@@ -54,7 +54,7 @@ class SlidersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SlidersRequest $request)
+    public function store(SliderRequest $request)
     {
         $slider = Slider::create($request->all());
         
@@ -94,7 +94,7 @@ class SlidersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SlidersRequest $request, $id)
+    public function update(SliderRequest $request, $id)
     {
         $slider = Slider::find($id);
         
@@ -112,6 +112,25 @@ class SlidersController extends Controller
     public function destroy($id)
     {
         Slider::destroy($id);
+    }
+    
+    /**
+     * Handle images upload
+     *
+     * @param Milax\Mconsole\Sliders\Models\Sliders $sliders [Sliders object]
+     * @return void
+     */
+    protected function handleImages($object)
+    {
+        // Images processing
+        app('API')->images->handle(function ($images) use (&$object) {
+            app('API')->images->attach([
+                'group' => 'sliders',
+                'images' => $images,
+                'related' => $object,
+                'unique' => false,
+            ]);
+        });
     }
     
 }
