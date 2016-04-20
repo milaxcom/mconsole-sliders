@@ -58,7 +58,7 @@ class SlidersController extends Controller
     {
         $slider = Slider::create($request->all());
         
-        $this->handleImages($slider);
+        $this->handleFiles($slider);
     }
 
     /**
@@ -98,7 +98,7 @@ class SlidersController extends Controller
     {
         $slider = Slider::find($id);
         
-        $this->handleImages($slider);
+        $this->handleFiles($slider);
         
         $slider->update($request->all());
     }
@@ -120,17 +120,16 @@ class SlidersController extends Controller
      * @param Milax\Mconsole\Sliders\Models\Sliders $sliders [Sliders object]
      * @return void
      */
-    protected function handleImages($object)
+    protected function handleFiles($object)
     {
         // Images processing
         app('API')->uploads->handle(function ($files) use (&$object) {
             app('API')->uploads->attach([
                 'group' => 'sliders',
-                'images' => $files,
+                'uploads' => $files,
                 'related' => $object,
                 'unique' => false,
             ]);
         });
     }
-    
 }
