@@ -29,7 +29,7 @@ return [
         app('API')->menu->push('content', 'sliders_all', [
             'name' => 'All sliders',
             'translation' => 'sliders.menu.list.name',
-            'url' => 'news',
+            'url' => 'sliders',
             'description' => 'sliders.menu.list.description',
             'route' => 'mconsole.sliders.index',
             'visible' => true,
@@ -38,7 +38,7 @@ return [
         app('API')->menu->push('content', 'sliders_create', [
             'name' => 'Create slider',
             'translation' => 'sliders.menu.create.name',
-            'url' => 'news',
+            'url' => 'sliders',
             'description' => 'sliders.menu.create.description',
             'route' => 'mconsole.sliders.create',
             'visible' => false,
@@ -47,7 +47,7 @@ return [
         app('API')->menu->push('content', 'sliders_update', [
             'name' => 'Update slider',
             'translation' => 'sliders.menu.update.name',
-            'url' => 'news',
+            'url' => 'sliders',
             'description' => 'sliders.menu.update.description',
             'route' => 'mconsole.sliders.edit',
             'visible' => false,
@@ -56,7 +56,7 @@ return [
         app('API')->menu->push('content', 'sliders_delete', [
             'name' => 'Delete slider',
             'translation' => 'sliders.menu.delete.name',
-            'url' => 'news',
+            'url' => 'sliders',
             'description' => 'sliders.menu.delete.description',
             'route' => 'mconsole.sliders.destroy',
             'visible' => false,
