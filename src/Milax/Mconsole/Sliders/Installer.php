@@ -62,6 +62,6 @@ class Installer implements ModuleInstaller
     public static function uninstall()
     {
         app('API')->options->uninstall(self::$options);
-        app('API')->presets->unisntall(self::$presets);
+        app('API')->presets->uninstall(self::$presets);
     }
 }
