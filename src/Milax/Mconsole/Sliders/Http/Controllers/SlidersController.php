@@ -7,16 +7,25 @@ use Milax\Mconsole\Sliders\Http\Requests\SliderRequest;
 use Milax\Mconsole\Sliders\Models\Slider;
 use Milax\Mconsole\Models\MconsoleUploadPreset;
 use Milax\Mconsole\Models\Language;
+use ListRenderer;
 
 /**
  * Sliders module controller file
  */
 class SlidersController extends Controller
 {
-    use \HasQueryTraits, \HasRedirects, \HasPaginator;
+    use \HasRedirects;
     
     protected $redirectTo = '/mconsole/sliders';
     protected $model = 'Milax\Mconsole\Sliders\Models\Slider';
+    
+    /**
+     * Create new class instance
+     */
+    public function __construct(ListRenderer $renderer)
+    {
+        $this->renderer = $renderer;
+    }
     
     /**
      * Display a listing of the resource.
@@ -25,7 +34,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        return $this->setPerPage(20)->run('mconsole::sliders.list', function ($item) {
+        return $this->renderer->setQuery(Slider::query())->setPerPage(20)->render('sliders/create', function ($item) {
             return [
                 '#' => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
