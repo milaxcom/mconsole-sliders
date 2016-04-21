@@ -29,7 +29,6 @@ class SlidersController extends Controller
             return [
                 '#' => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
-                trans('mconsole::sliders.table.slug') => $item->slug,
                 trans('mconsole::sliders.table.title') => $item->title,
             ];
         });
