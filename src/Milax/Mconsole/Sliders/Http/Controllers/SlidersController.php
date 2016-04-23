@@ -34,7 +34,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        return $this->renderer->setQuery(Slider::query())->setPerPage(20)->render('sliders/create', function ($item) {
+        return $this->renderer->setQuery(Slider::query())->setPerPage(20)->setAddAction('sliders/create')->render(function ($item) {
             return [
                 '#' => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
