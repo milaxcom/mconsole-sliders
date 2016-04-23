@@ -14,7 +14,7 @@ class Installer implements ModuleInstaller
             'key' => 'sliders_show_presets',
             'value' => '0',
             'type' => 'select',
-            'options' => ['1' => 'sliders.options.on', '0' => 'sliders.options.off'],
+            'options' => ['1' => 'settings.options.on', '0' => 'settings.options.off'],
         ],
     ];
     
