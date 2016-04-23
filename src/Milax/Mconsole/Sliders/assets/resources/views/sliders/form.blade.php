@@ -12,8 +12,8 @@
             <div class="portlet light">
                 @if (isset($item))
                     @include('mconsole::partials.note', [
-                        'title' => trans('mconsole::sliders.form.info.title'),
-                        'text' => trans('mconsole::sliders.form.info.text'),
+                        'title' => trans('mconsole::sliders.info.title'),
+                        'text' => trans('mconsole::sliders.info.text'),
                     ])
                 @endif
                 
@@ -51,11 +51,11 @@
                         </div>
                         <div class="col-sm-4">
                         @include('mconsole::forms.select', [
-                            'label' => trans('mconsole::sliders.form.shuffle.name'),
+                            'label' => trans('mconsole::sliders.form.shuffle'),
                             'name' => 'shuffle',
                             'options' => [
-                                '0' => trans('mconsole::sliders.form.shuffle.options.order'),
-                                '1' => trans('mconsole::sliders.form.shuffle.options.random'),
+                                '0' => trans('mconsole::sliders.shuffle.options.order'),
+                                '1' => trans('mconsole::sliders.shuffle.options.random'),
                             ]
                         ])
                         </div>
