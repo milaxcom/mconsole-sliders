@@ -7,7 +7,8 @@ use Milax\Mconsole\Sliders\Http\Requests\SliderRequest;
 use Milax\Mconsole\Sliders\Models\Slider;
 use Milax\Mconsole\Models\MconsoleUploadPreset;
 use Milax\Mconsole\Models\Language;
-use ListRenderer;
+use Milax\Mconsole\Contracts\ListRenderer;
+use Milax\Mconsole\Contracts\FormRenderer;
 
 /**
  * Sliders module controller file
@@ -22,9 +23,10 @@ class SlidersController extends Controller
     /**
      * Create new class instance
      */
-    public function __construct(ListRenderer $renderer)
+    public function __construct(ListRenderer $list, FormRenderer $form)
     {
-        $this->renderer = $renderer;
+        $this->list = $list;
+        $this->form = $form;
     }
     
     /**
@@ -34,7 +36,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        return $this->renderer->setQuery(Slider::query())->setPerPage(20)->setAddAction('sliders/create')->render(function ($item) {
+        return $this->list->setQuery(Slider::query())->setPerPage(20)->setAddAction('sliders/create')->render(function ($item) {
             return [
                 '#' => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
@@ -50,7 +52,7 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        return view('mconsole::sliders.form', [
+        return $this->form->render('mconsole::sliders.form', [
             'presets' => MconsoleUploadPreset::all(),
             'languages' => Language::all(),
         ]);
@@ -88,7 +90,7 @@ class SlidersController extends Controller
      */
     public function edit($id)
     {
-        return view('mconsole::sliders.form', [
+        return $this->form->render('mconsole::sliders.form', [
             'item' => Slider::find($id),
             'presets' => MconsoleUploadPreset::all(),
             'languages' => Language::all(),
