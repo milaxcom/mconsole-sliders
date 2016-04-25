@@ -91,7 +91,7 @@ class SlidersController extends Controller
     public function edit($id)
     {
         return $this->form->render('mconsole::sliders.form', [
-            'item' => Slider::find($id),
+            'item' => Slider::findOrFail($id),
             'presets' => MconsoleUploadPreset::all(),
             'languages' => Language::all(),
         ]);
@@ -106,7 +106,7 @@ class SlidersController extends Controller
      */
     public function update(SliderRequest $request, $id)
     {
-        $slider = Slider::find($id);
+        $slider = Slider::findOrFail($id);
         
         $this->handleFiles($slider);
         
