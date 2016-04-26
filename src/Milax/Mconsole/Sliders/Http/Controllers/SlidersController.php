@@ -15,7 +15,7 @@ use Milax\Mconsole\Contracts\FormRenderer;
  */
 class SlidersController extends Controller
 {
-    use \HasRedirects;
+    use \HasRedirects, \DoesNotHaveShow;
     
     protected $redirectTo = '/mconsole/sliders';
     protected $model = 'Milax\Mconsole\Sliders\Models\Slider';
