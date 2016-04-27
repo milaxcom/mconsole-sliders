@@ -7,7 +7,7 @@ use Request;
 
 class Slider extends Model
 {
-    use \HasTags, \HasState;
+    use \CascadeDelete, \HasUploads, \HasTags, \HasState;
     
     protected $fillable = ['preset_id', 'slug', 'title', 'description', 'duration', 'concurrent', 'shuffle', 'enabled'];
     
