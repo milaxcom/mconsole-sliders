@@ -74,7 +74,7 @@
                 'multiple' => true,
                 'group' => 'sliders',
                 'preset' => 'sliders',
-                'selector' => app('API')->options->get('gallery_show_presets'),
+                'selector' => app('API')->options->getByKey('gallery_show_presets'),
                 'id' => isset($item) ? $item->id : null,
                 'model' => 'Milax\Mconsole\Sliders\Models\Slider',
             ])
