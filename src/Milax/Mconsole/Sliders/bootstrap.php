@@ -26,7 +26,7 @@ return [
         Installer::uninstall();
     },
     'init' => function () {
-        app('API')->menu->push('content', 'sliders_all', [
+        app('API')->menu->push([
             'name' => 'All sliders',
             'translation' => 'sliders.menu.list.name',
             'url' => 'sliders',
@@ -34,8 +34,8 @@ return [
             'route' => 'mconsole.sliders.index',
             'visible' => true,
             'enabled' => true,
-        ]);
-        app('API')->menu->push('content', 'sliders_create', [
+        ], 'sliders_all', 'content');
+        app('API')->menu->push([
             'name' => 'Create slider',
             'translation' => 'sliders.menu.create.name',
             'url' => 'sliders',
@@ -43,8 +43,8 @@ return [
             'route' => 'mconsole.sliders.create',
             'visible' => false,
             'enabled' => true,
-        ]);
-        app('API')->menu->push('content', 'sliders_update', [
+        ], 'sliders_create', 'content');
+        app('API')->menu->push([
             'name' => 'Update slider',
             'translation' => 'sliders.menu.update.name',
             'url' => 'sliders',
@@ -52,8 +52,8 @@ return [
             'route' => 'mconsole.sliders.edit',
             'visible' => false,
             'enabled' => true,
-        ]);
-        app('API')->menu->push('content', 'sliders_delete', [
+        ], 'sliders_update', 'content');
+        app('API')->menu->push([
             'name' => 'Delete slider',
             'translation' => 'sliders.menu.delete.name',
             'url' => 'sliders',
@@ -61,6 +61,6 @@ return [
             'route' => 'mconsole.sliders.destroy',
             'visible' => false,
             'enabled' => true,
-        ]);
+        ], 'sliders_delete', 'content');
     },
 ];
