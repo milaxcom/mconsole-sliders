@@ -9,6 +9,7 @@ use Milax\Mconsole\Models\MconsoleUploadPreset;
 use Milax\Mconsole\Models\Language;
 use Milax\Mconsole\Contracts\ListRenderer;
 use Milax\Mconsole\Contracts\FormRenderer;
+use Milax\Mconsole\Contracts\Repository;
 
 /**
  * Sliders module controller file
@@ -23,10 +24,11 @@ class SlidersController extends Controller
     /**
      * Create new class instance
      */
-    public function __construct(ListRenderer $list, FormRenderer $form)
+    public function __construct(ListRenderer $list, FormRenderer $form, Repository $repository)
     {
         $this->list = $list;
         $this->form = $form;
+        $this->repository = $repository;
     }
     
     /**
@@ -36,7 +38,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        return $this->list->setQuery(Slider::query())->setAddAction('sliders/create')->render(function ($item) {
+        return $this->list->setQuery($this->repository->index())->setAddAction('sliders/create')->render(function ($item) {
             return [
                 '#' => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
@@ -66,7 +68,7 @@ class SlidersController extends Controller
      */
     public function store(SliderRequest $request)
     {
-        $slider = Slider::create($request->all());
+        $slider = $this->repository->create($request->all());
         
         $this->handleFiles($slider);
     }
@@ -91,7 +93,7 @@ class SlidersController extends Controller
     public function edit($id)
     {
         return $this->form->render('mconsole::sliders.form', [
-            'item' => Slider::findOrFail($id),
+            'item' => $this->repository->find($id),
             'presets' => MconsoleUploadPreset::all(),
             'languages' => Language::all(),
         ]);
@@ -106,7 +108,7 @@ class SlidersController extends Controller
      */
     public function update(SliderRequest $request, $id)
     {
-        $slider = Slider::findOrFail($id);
+        $slider = $this->repository->find($id);
         
         $this->handleFiles($slider);
         
@@ -121,7 +123,7 @@ class SlidersController extends Controller
      */
     public function destroy($id)
     {
-        Slider::destroy($id);
+        $this->repository->destroy($id);
     }
     
     /**

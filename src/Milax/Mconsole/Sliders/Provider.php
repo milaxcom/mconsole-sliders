@@ -3,6 +3,8 @@
 namespace Milax\Mconsole\Sliders;
 
 use Illuminate\Support\ServiceProvider;
+use Milax\Mconsole\Sliders\SlidersRepository;
+use Milax\Mconsole\Sliders\Models\Slider;
 
 class Provider extends ServiceProvider
 {
@@ -23,6 +25,10 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-        // ..
+        $this->app->when('\Milax\Mconsole\Sliders\Http\Controllers\SlidersController')
+            ->needs('\Milax\Mconsole\Contracts\Repository')
+            ->give(function () {
+                return new SlidersRepository(Slider::class);
+            });
     }
 }
