@@ -27,40 +27,21 @@ return [
     },
     'init' => function () {
         app('API')->menu->push([
-            'name' => 'All sliders',
+            'name' => 'Sliders',
             'translation' => 'sliders.menu.list.name',
             'url' => 'sliders',
-            'description' => 'sliders.menu.list.description',
-            'route' => 'mconsole.sliders.index',
             'visible' => true,
             'enabled' => true,
-        ], 'sliders_all', 'content');
-        app('API')->menu->push([
-            'name' => 'Create slider',
-            'translation' => 'sliders.menu.create.name',
-            'url' => 'sliders',
-            'description' => 'sliders.menu.create.description',
-            'route' => 'mconsole.sliders.create',
-            'visible' => false,
-            'enabled' => true,
-        ], 'sliders_create', 'content');
-        app('API')->menu->push([
-            'name' => 'Update slider',
-            'translation' => 'sliders.menu.update.name',
-            'url' => 'sliders',
-            'description' => 'sliders.menu.update.description',
-            'route' => 'mconsole.sliders.edit',
-            'visible' => false,
-            'enabled' => true,
-        ], 'sliders_update', 'content');
-        app('API')->menu->push([
-            'name' => 'Delete slider',
-            'translation' => 'sliders.menu.delete.name',
-            'url' => 'sliders',
-            'description' => 'sliders.menu.delete.description',
-            'route' => 'mconsole.sliders.destroy',
-            'visible' => false,
-            'enabled' => true,
-        ], 'sliders_delete', 'content');
+        ], 'sliders', 'content');
+        
+        app('API')->acl->register([
+            ['GET', 'sliders', 'sliders.acl.index', 'sliders'],
+            ['GET', 'sliders/create', 'sliders.acl.create'],
+            ['POST', 'sliders', 'sliders.acl.store'],
+            ['GET', 'sliders/{sliders}/edit', 'sliders.acl.edit'],
+            ['PUT', 'sliders/{sliders}', 'sliders.acl.update'],
+            ['GET', 'sliders/{sliders}', 'sliders.acl.show'],
+            ['DELETE', 'sliders/{sliders}', 'sliders.acl.destroy'],
+        ]);
     },
 ];

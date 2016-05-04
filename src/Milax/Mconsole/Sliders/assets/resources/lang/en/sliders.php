@@ -53,4 +53,13 @@ return [
             'name' => 'Show upload preset selector',
         ],
     ],
+    'acl' => [
+        'index' => 'Sliders: show list',
+        'create' => 'Sliders: show create form',
+        'store' => 'Sliders: saving',
+        'edit' => 'Sliders: show edit form',
+        'update' => 'Sliders: updating',
+        'show' => 'Sliders: view',
+        'destroy' => 'Sliders: delete',
+    ],
 ];
