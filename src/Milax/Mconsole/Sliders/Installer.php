@@ -17,6 +17,7 @@ class Installer implements ModuleInstaller
             'value' => '0',
             'type' => 'select',
             'options' => ['1' => 'settings.options.on', '0' => 'settings.options.off'],
+            'enabled' => 1,
         ],
     ];
     
