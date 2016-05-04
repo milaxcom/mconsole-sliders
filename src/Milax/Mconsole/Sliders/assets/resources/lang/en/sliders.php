@@ -2,24 +2,8 @@
 
 
 return [
-    'menu' => [
-        'list' => [
-            'name' => 'Sliders',
-            'description' => 'Manage sliders',
-        ],
-        'create' => [
-            'name' => 'Add slider',
-            'description' => 'Add new slider images',
-        ],
-        'update' => [
-            'name' => 'Edit slider',
-            'description' => 'Edit slider',
-        ],
-        'delete' => [
-            'name' => 'Delete slider',
-            'description' => 'Remove the slider from all sub-images',
-        ],
-    ],
+    'module' => 'Slideshow and banners',
+    'menu' => 'Sliders',
     'table' => [
         'updated' => 'Updated',
         'title' => 'Name',

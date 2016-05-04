@@ -8,7 +8,7 @@ use Milax\Mconsole\Sliders\Installer;
 return [
     'name' => 'Sliders',
     'identifier' => 'mconsole-sliders',
-    'description' => '',
+    'description' => 'mconsole::sliders.module',
     'menu' => [],
     'register' => [
         'middleware' => [],
@@ -28,7 +28,7 @@ return [
     'init' => function () {
         app('API')->menu->push([
             'name' => 'Sliders',
-            'translation' => 'sliders.menu.list.name',
+            'translation' => 'sliders.menu',
             'url' => 'sliders',
             'visible' => true,
             'enabled' => true,
