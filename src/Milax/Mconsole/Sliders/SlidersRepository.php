@@ -1,7 +1,9 @@
-<?php 
+<?php
+
+
 namespace Milax\Mconsole\Sliders;
 
-use Milax\Mconsole\Abstractions\Repositories\EloquentRepository;
+use Milax\Mconsole\Repositories\EloquentRepository;
 
 class SlidersRepository extends EloquentRepository
 {
