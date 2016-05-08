@@ -27,8 +27,7 @@ return [
     },
     'init' => function () {
         app('API')->menu->push([
-            'name' => 'Sliders',
-            'translation' => 'sliders.menu',
+            'name' => 'sliders.menu',
             'url' => 'sliders',
             'visible' => true,
             'enabled' => true,
