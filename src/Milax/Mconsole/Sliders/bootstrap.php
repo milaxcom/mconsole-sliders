@@ -27,7 +27,7 @@ return [
     },
     'init' => function () {
         app('API')->menu->push([
-            'name' => 'sliders.menu',
+            'name' => 'mconsole::sliders.menu',
             'url' => 'sliders',
             'visible' => true,
             'enabled' => true,
