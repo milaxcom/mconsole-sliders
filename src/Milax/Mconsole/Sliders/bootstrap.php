@@ -34,13 +34,13 @@ return [
         ], 'sliders', 'content');
         
         app('API')->acl->register([
-            ['GET', 'sliders', 'sliders.acl.index', 'sliders'],
-            ['GET', 'sliders/create', 'sliders.acl.create'],
-            ['POST', 'sliders', 'sliders.acl.store'],
-            ['GET', 'sliders/{sliders}/edit', 'sliders.acl.edit'],
-            ['PUT', 'sliders/{sliders}', 'sliders.acl.update'],
-            ['GET', 'sliders/{sliders}', 'sliders.acl.show'],
-            ['DELETE', 'sliders/{sliders}', 'sliders.acl.destroy'],
+            ['GET', 'sliders', 'mconsole::sliders.acl.index', 'sliders'],
+            ['GET', 'sliders/create', 'mconsole::sliders.acl.create'],
+            ['POST', 'sliders', 'mconsole::sliders.acl.store'],
+            ['GET', 'sliders/{sliders}/edit', 'mconsole::sliders.acl.edit'],
+            ['PUT', 'sliders/{sliders}', 'mconsole::sliders.acl.update'],
+            ['GET', 'sliders/{sliders}', 'mconsole::sliders.acl.show'],
+            ['DELETE', 'sliders/{sliders}', 'mconsole::sliders.acl.destroy'],
         ]);
     },
 ];
