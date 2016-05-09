@@ -11,12 +11,12 @@ class Installer implements ModuleInstaller
 {
     public static $options = [
         [
-            'group' => 'sliders.options.settings.group',
-            'label' => 'sliders.options.presets.name',
+            'group' => 'mconsole::sliders.options.settings.group',
+            'label' => 'mconsole::sliders.options.presets.name',
             'key' => 'sliders_show_presets',
             'value' => '0',
             'type' => 'select',
-            'options' => ['1' => 'settings.options.on', '0' => 'settings.options.off'],
+            'options' => ['1' => 'mconsole::settings.options.on', '0' => 'mconsole::settings.options.off'],
             'enabled' => 1,
         ],
     ];

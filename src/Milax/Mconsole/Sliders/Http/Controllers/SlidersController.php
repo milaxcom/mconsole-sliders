@@ -18,7 +18,6 @@ class SlidersController extends Controller
 {
     use \HasRedirects, \DoesNotHaveShow;
     
-    protected $redirectTo = '/mconsole/sliders';
     protected $model = 'Milax\Mconsole\Sliders\Models\Slider';
     
     /**
@@ -29,6 +28,7 @@ class SlidersController extends Controller
         $this->list = $list;
         $this->form = $form;
         $this->repository = $repository;
+        $this->redirectTo = mconsole_url('sliders');
     }
     
     /**

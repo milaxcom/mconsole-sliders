@@ -1,7 +1,7 @@
 @if (isset($item))
-    {!! Form::model($item, ['method' => 'PUT', 'route' => ['mconsole.sliders.update', $item->id]]) !!}
+    {!! Form::model($item, ['method' => 'PUT', 'url' => mconsole_url(sprintf('sliders/%s', $item->id))]) !!}
 @else
-    {!! Form::open(['method' => 'POST', 'url' => '/mconsole/sliders']) !!}
+    {!! Form::open(['method' => 'POST', 'url' => mconsole_url('sliders')]) !!}
 @endif
 <div class="row">
 	<div class="col-lg-7 col-md-6">
@@ -14,7 +14,7 @@
             @endif
             
             @include('mconsole::partials.portlet-title', [
-                'back' => '/mconsole/sliders',
+                'back' => mconsole_url('sliders'),
                 'title' => trans('mconsole::sliders.form.main'),
                 'fullscreen' => true,
             ])
