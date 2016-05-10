@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                @include('mconsole::forms.state')
+                @include('mconsole::forms.state', isset($item) ? $item : [])
             </div>
         </div>
         
