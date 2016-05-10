@@ -9,7 +9,7 @@ class Slider extends Model
 {
     use \CascadeDelete, \HasUploads, \HasTags, \HasState;
     
-    protected $fillable = ['preset_id', 'slug', 'title', 'description', 'duration', 'concurrent', 'shuffle', 'enabled'];
+    protected $fillable = ['slug', 'title', 'description', 'duration', 'concurrent', 'shuffle', 'enabled'];
     
     /**
      * Automatically generate slug from heading if empty, format for url
