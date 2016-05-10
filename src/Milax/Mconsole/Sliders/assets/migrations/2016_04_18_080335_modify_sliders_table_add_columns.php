@@ -13,8 +13,8 @@ class ModifySlidersTableAddColumns extends Migration
     public function up()
     {
         Schema::table('sliders', function (Blueprint $table) {
-            $table->integer('concurrent')->after('description')->default(0);
-            $table->boolean('shuffle')->after('description')->default(false);
+            $table->integer('concurrent')->nullable()->after('description')->default(0);
+            $table->boolean('shuffle')->nullable()->after('description')->default(false);
         });
     }
 
