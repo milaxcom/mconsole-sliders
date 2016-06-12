@@ -23,12 +23,6 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-        app('API')->repositories->register('sliders', new \Milax\Mconsole\Sliders\SlidersRepository(\Milax\Mconsole\Sliders\Models\Slider::class));
         
-        $this->app->when('\Milax\Mconsole\Sliders\Http\Controllers\SlidersController')
-            ->needs('\Milax\Mconsole\Contracts\Repository')
-            ->give(function () {
-                return app('API')->repositories->sliders;
-            });
     }
 }
