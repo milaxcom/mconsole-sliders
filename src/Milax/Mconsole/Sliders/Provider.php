@@ -23,6 +23,6 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-        
+        $this->app->bind('Milax\Mconsole\Sliders\Contracts\Repositories\SlidersRepository', 'Milax\Mconsole\Sliders\Repositories\SlidersRepository');
     }
 }
