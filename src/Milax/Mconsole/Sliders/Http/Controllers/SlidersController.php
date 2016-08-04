@@ -41,7 +41,7 @@ class SlidersController extends Controller
     {
         return $this->list->setQuery($this->repository->index())->setAddAction('sliders/create')->render(function ($item) {
             return [
-                '#' => $item->id,
+                trans('mconsole::tables.id') => $item->id,
                 trans('mconsole::sliders.table.updated') => $item->updated_at->format('m.d.Y'),
                 trans('mconsole::sliders.table.title') => $item->title,
             ];
