@@ -70,7 +70,7 @@
                 </div>
             </div>            
             @include('mconsole::forms.upload', [
-                'type' => MX_UPLOAD_TYPE_IMAGE,
+                'type' => MconsoleUploadType::Image,
                 'multiple' => true,
                 'group' => 'sliders',
                 'preset' => 'sliders',

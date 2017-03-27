@@ -72,6 +72,8 @@ class SlidersController extends Controller
         $slider = $this->repository->create($request->all());
         
         $this->handleFiles($slider);
+        
+        $this->redirect();
     }
 
     /**
@@ -114,6 +116,8 @@ class SlidersController extends Controller
         $this->handleFiles($slider);
         
         $slider->update($request->all());
+        
+        $this->redirect();
     }
 
     /**
@@ -125,6 +129,8 @@ class SlidersController extends Controller
     public function destroy($id)
     {
         $this->repository->destroy($id);
+        
+        $this->redirect();
     }
     
     /**
