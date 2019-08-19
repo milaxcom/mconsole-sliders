@@ -37,10 +37,10 @@ return [
             ['GET', 'sliders', 'mconsole::sliders.acl.index'],
             ['GET', 'sliders/create', 'mconsole::sliders.acl.create'],
             ['POST', 'sliders', 'mconsole::sliders.acl.store'],
-            ['GET', 'sliders/{sliders}/edit', 'mconsole::sliders.acl.edit'],
-            ['PUT', 'sliders/{sliders}', 'mconsole::sliders.acl.update'],
-            ['GET', 'sliders/{sliders}', 'mconsole::sliders.acl.show'],
-            ['DELETE', 'sliders/{sliders}', 'mconsole::sliders.acl.destroy'],
+            ['GET', 'sliders/{slider}/edit', 'mconsole::sliders.acl.edit'],
+            ['PUT', 'sliders/{slider}', 'mconsole::sliders.acl.update'],
+            ['GET', 'sliders/{slider}', 'mconsole::sliders.acl.show'],
+            ['DELETE', 'sliders/{slider}', 'mconsole::sliders.acl.destroy'],
         ], 'sliders');
     },
 ];
