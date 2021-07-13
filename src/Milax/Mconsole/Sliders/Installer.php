@@ -4,7 +4,7 @@ namespace Milax\Mconsole\Sliders;
 
 use Milax\Mconsole\Contracts\Modules\ModuleInstaller;
 use Milax\Mconsole\Models\MconsoleUploadPreset;
-use Milax\Mconsole\Sliders\SlidersRepository;
+use Milax\Mconsole\Sliders\Contracts\Repositories\SlidersRepository;
 use Milax\Mconsole\Sliders\Models\Slider;
 
 class Installer implements ModuleInstaller
@@ -68,7 +68,7 @@ class Installer implements ModuleInstaller
         app('API')->options->uninstall(self::$options);
         app('API')->presets->uninstall(self::$presets);
         
-        $repository = new SlidersRepository(Slider::class);
+        $repository = app(SlidersRepository::class);
         foreach ($repository->get() as $instance) {
             $instance->delete();
         }
