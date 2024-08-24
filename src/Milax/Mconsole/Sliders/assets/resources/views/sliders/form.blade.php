@@ -1,8 +1,7 @@
-@if (isset($item))
-    {!! Form::model($item, ['method' => 'PUT', 'url' => mconsole_url(sprintf('sliders/%s', $item->id))]) !!}
-@else
-    {!! Form::open(['method' => 'POST', 'url' => mconsole_url('sliders')]) !!}
-@endif
+<form method="POST" action="{{ mconsole_url(isset($item) ? sprintf('sliders/%s', $item->id) : 'sliders') }}" enctype="multipart/form-data">
+    @if (isset($item))@method('PUT')@endif
+    @csrf
+
 <div class="row">
 	<div class="col-lg-7 col-md-6">
         <div class="portlet light">
@@ -23,11 +22,13 @@
     				@include('mconsole::forms.text', [
     					'label' => trans('mconsole::sliders.form.title'),
     					'name' => 'title',
+                        'value' => $item->title ?? null,
     				])
     				@include('mconsole::forms.textarea', [
     					'label' => trans('mconsole::sliders.form.description'),
     					'name' => 'description',
                         'size' => '50x2',
+                        'value' => $item->description ?? null,
     				])
     			</div>
                 <div class="row">
@@ -36,6 +37,7 @@
                         'label' => trans('mconsole::sliders.form.duration'),
                         'name' => 'duration',
                         'placeholder' => '5000',
+                        'value' => $item->duration ?? null,
                     ])
                     </div>
                     <div class="col-sm-4">
@@ -43,6 +45,7 @@
                         'label' => trans('mconsole::sliders.form.concurrent'),
                         'name' => 'concurrent',
                         'placeholder' => '0',
+                        'value' => $item->concurrent ?? null,
                     ])
                     </div>
                     <div class="col-sm-4">
@@ -52,7 +55,8 @@
                         'options' => [
                             '0' => trans('mconsole::sliders.shuffle.options.order'),
                             '1' => trans('mconsole::sliders.shuffle.options.random'),
-                        ]
+                        ],
+                        'value' => $item->shuffle ?? null,
                     ])
                     </div>
                 </div>
@@ -93,4 +97,4 @@
     </div>
 </div>
 
-{!! Form::close() !!}
+</form>
