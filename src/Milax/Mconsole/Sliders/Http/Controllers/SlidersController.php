@@ -19,6 +19,8 @@ class SlidersController extends Controller
     use \HasRedirects, \DoesNotHaveShow, \UseLayout;
     
     protected $model = 'Milax\Mconsole\Sliders\Models\Slider';
+
+    protected $form, $list, $repository, $redirectTo;
     
     /**
      * Create new class instance
